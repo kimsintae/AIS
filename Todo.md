@@ -1,23 +1,23 @@
 #AIS 개발 스펙
 
 
-framework
+#framework</br>
 -Spring Framwork
 
-language
--Java
+#language</br>
+-Java</br>
 -R
 
-#client
--bootstrap
--JSP
--jquery
--Qgis(GIS tool)
+#client</br>
+-bootstrap</br>
+-JSP</br>
+-jquery</br>
+-Qgis(GIS tool)</br>
 -openLayers
 
-#server
--Tomcat 8.0(WAS)
--centos(서버)
+#server</br>
+-Tomcat 8.0(WAS)</br>
+-centos(서버)</br>
 -geoserver(GIS 서버)
 
 
