@@ -13,7 +13,7 @@
 -JSP</br>
 -jquery</br>
 -Qgis(GIS tool)</br>
--openLayers
+-openLayers v4.3.6
 
 #server</br>
 -Tomcat 8.0(WAS)</br>
