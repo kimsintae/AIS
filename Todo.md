@@ -1,10 +1,10 @@
 #AIS 개발 스펙
 
 
-#framework
+framework
 -Spring Framwork
 
-#language
+language
 -Java
 -R
 
