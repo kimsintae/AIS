@@ -21,6 +21,6 @@
 -geoserver(GIS 서버)
 
 
-#Database server
--postgreSQL(외부DB)
+#Database server</br>
+-postgreSQL(외부DB)</br>
 -postGIS
