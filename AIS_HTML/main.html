@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ASI v1.0</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/ol.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">ASL</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav" id="select_type_box">
+                    <li>
+                        <select name="acd_type" id="act_type" class="form-control">
+                            <option value="car_act">교통사고</option>
+                            <option value="jaywalking_act">무단횡단 사고</option>
+                            <option value="walking_old_act">보행노인 사고</option>
+                            <option value="walking_kids_act">보행어린이 사고</option>
+                            <option value="school_kids_act">스쿨존 어린이 사고</option>
+                            <option value="bicycle_act">자전거 사고</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select name="sido_type" id="sido_type" class="form-control">
+                            <option value="default">지역을 선택해 주세요.</option>
+                            <option value="seoul">서울</option>
+                            <option value="busan">부산</option>
+                            <option value="daegu">대구</option>
+                            <option value="incheon">인천</option>
+                            <option value="kwangju">광주</option>
+                            <option value="daejeon">대전</option>
+                            <option value="ulsan">울산</option>
+                            <option value="saejong">세종</option>
+                            <option value="kangwon">강원도</option>
+                            <option value="kynggi">경기도</option>
+                            <option value="kyngnam">경상남도</option>
+                            <option value="kyngbuk">경상북도</option>
+                            <option value="jeonnam">전라남도</option>
+                            <option value="jeonbuk">전라북도</option>
+                            <option value="chungnam">충청남도</option>
+                            <option value="chungbuk">충청북도</option>
+                            <option value="jeju">제주특별자치도</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select name="sigugun_type" id="sigugun_type" class="form-control">
+                            <option value="default">시도군을 선택해주세요!</option>
+                        </select>
+                    </li>
+                </ul>
+                <button id="myLocation" title="현재 지역에 대한 사고 정보를 표시합니다." onclick="getLocation();"><i class="fa fa-map-marker"></i></button>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid text-center">
+        <div class="row content">
+
+            <!-- 지도영역 -->
+            <div class="col-sm-10" style="padding:0;">
+                <div id="map" class="map"></div>
+            </div>
+
+            <!-- 분석 그래프 및 채팅 창 -->
+            <div class="col-sm-2 sidenav">
+                <div class="well side_graph">
+                    <p>분석</p>
+                </div>
+                <div class="well side_graph">
+                    <p>분석</p>
+                </div>
+                <div class="well side_graph">
+                    <p>분석</p>
+                </div>
+                <div id="chattingMsgBox" class="well" style="margin-bottom:0;">
+                </div>
+                <input id="chattingBox" class="well col-sm-10" type="text">
+                <button class="well col-sm-2 text-center" type="button" style="font-size:8px;">go</button>
+
+
+            </div>
+        </div>
+    </div>
+
+
+    <script type="text/javascript" src="js/ol.js"></script>
+    <script>
+        var areas = {
+
+            "seoul": ["강남구", "강동구", "강북구", "강서구", "관악구",
+                      "광진구", "구로구", "금천구", "노원구", "도봉구",
+                      "동대문구", "동작구", "마포구", "서대문구", "서초구",
+                      "성동구", "성북구", "송파구", "양천구", "영등포구",
+                      "용산구", "은평구", "종로구", "중구", "중랑구"],
+            "jeju": ["제주시", "서귀포시"],
+            "incheon": ["계양구", "남구", "남동구", "동구", "부평구",
+                        "서구", "연수구", "중구", "강화군", "옹진군"],
+            "daejeon": ["대덕구", "동구", "서구", "유성구", "중구", ],
+            "daegu": ["남구", "달서구", "동구", "북구", "서구",
+                      "수성구", "중구", ],
+            "busan": ["강서구", "금정구", "남구", "동구", "동래구",
+                      "부산진구", "북구", "사상구", "사하구", "서구",
+                      "수영구", "연제구", "영도구", "중구", "해운대구"],
+            "ulsan": ["남구", "동구", "북구", "중구", "울주군"],
+            "kwangju": ["광산구", "남구", "동구", "북구", "서구"],
+            "kyngki": ["고양시", "과천시", "광명시", "광주시", "구리시",
+                       "군포시", "김포시", "남양주시", "동두천시", "부천시",
+                       "성남시", "수원시", "시흥시", "안산시", "안성시",
+                       "안양시", "양주시", "여주시", "오산시", "용인시",
+                       "의왕시", "의정부시", "이천시", "파주시", "파주시",
+                       "평택시", "포천시", "하남시", "화성시", "가평군",
+                       "양평군", "연천군", ],
+            "chungnam": ["공주시", "계룡시", "논산시", "당진시", "보령시",
+                         "서산시", "아산시", "천안시", "금산군", "부여군",
+                         "서천군", "예산군", "청양군", "태안군", "홍성군"],
+            "chungbuk": ["제천시", "청주시", "충주시", "괴산군", "단양군",
+                         "보은군", "영동군", "옥천군", "음성군", "증평군",
+                         "진천군"],
+            "kangwon": ["강릉시", "동해시", "삼척시", "속초시", "원주시",
+                        "춘천시", "태백시", "고성군", "양구군", "양양군",
+                        "영월군", "인제군", "정선군", ],
+            "kyngnam": ["거제시", "김해시", "밀양시", "사천시", "양산시",
+                        "진주시", "창원시", "통영시", "거창군", "고성군",
+                        "남해군", "산청군", "의령군", "창녕군", "하동군",
+                        "함안군", "함양군", "합천군"],
+            "kyngbuk": ["경산시", "경주시", "구미시", "김천시", "문경시",
+                        "상주시", "안동시", "영주시", "영천시", "포항시",
+                        "고령군", "군위군", "봉화군", "성주군", "영덕군",
+                        "영양군", "예천군", "울릉군", "울진군", "의성군",
+                        "청도군", "청송군", "칠곡군"],
+            "jeonnam": ["광양시", "나주시", "목포시", "순천시", "여수시",
+                        "강진군", "고흥군", "곡성군", "구례군", "담양군",
+                        "무안군", "보성군", "신안군", "영광군", "영암군",
+                        "완도군", "장성군", "장흥군", "진도군", "함평군",
+                        "해남군", "화순군"],
+            "jeonbuk": ["군산시", "김제시", "남원시", "익산시", "전주시",
+                        "정읍시", "고창군", "무주군", "부안군", "순창군",
+                        "완주군", "임실군", "장수군", "진안군"]
+        };
+
+        $("#sido_type").change(function () {
+            $("#sigugun_type").empty();
+            $("#sigugun_type").append("<option value='default'>시도군을 선택해주세요!</option>");
+            for (var i = 0; i < areas[$(this).val()].length; i++) {
+
+                $("#sigugun_type").append("<option value=''>" + areas[$(this).val()][i] + "</option>");
+            }
+        });
+
+
+
+
+        //지도
+
+        var view = new ol.View({
+            //                          longitude    latitude 
+            center: ol.proj.fromLonLat([127.8531913, 35.5807185]),
+            zoom: 12
+        });
+
+
+        //center(x,y) x 소수점 자리 올리면 오른쪽으로 이동, y 소수점 자리 올리면 위로 이동 
+        var map = new ol.Map({
+            target: 'map',
+            layers: [
+          new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                })
+        ],
+            view: view
+        });
+
+
+
+
+        //현재위치
+        function getLocation() {
+            if (navigator.geolocation) { // GPS를 지원하면
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    console.log(position);
+                    //현재위치 좌표
+                    //alert(position.coords.latitude + ' ' + position.coords.longitude);
+
+
+                }, function (error) {
+                    console.error(error);
+                }, {
+                    enableHighAccuracy: false,
+                    maximumAge: 0,
+                    timeout: Infinity
+                });
+            } else {
+                alert('GPS를 지원하지 않습니다');
+            }
+        }
+    </script>
+</body>
+
+</html>
