@@ -1,5 +1,6 @@
 var view;
 var map;
+var socket;
 $(document).ready(function () {
 
     var areas = {
@@ -89,7 +90,17 @@ $(document).ready(function () {
 
 
 
+    socket = new WebSocket("wss://sandbox.kaazing.net/echo");
 
+    socket.onmessage = function (e) {
+        alert(e.data);
+    }
+
+    socket.onopen = function (e) {
+        socket.send("환영합니다.");
+        $("#chattingMsgBox").append("<div class='col-sm-12' style='border:1px solid #424242;'>메롱</div>")
+
+    };
 });
 
 //현재위치
