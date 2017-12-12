@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>MAD v1.0</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box
+        }
+        /* Set height of body and the document to 100% */
+        
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial;
+        }
+        /* Style tab links */
+        
+        .tablink,
+        #title {
+            background-color: #555;
+            color: white;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            font-size: 17px;
+            width: 25%;
+        }
+        
+        .tablink:hover {
+            background-color: #777;
+        }
+        /* Style the tab content (and add height:100% for full page content) */
+        
+        .tabcontent {
+            color: black;
+            display: none;
+            padding: 100px 20px;
+            height: 100%;
+        }
+        
+        #UploadDatas {
+            background-color: green;
+        }
+        
+        #DatabaseStatus {
+            background-color: blue;
+        }
+        
+        #About {
+            background-color: orange;
+        }
+        
+        input[type=text],
+        select,
+        textarea {
+            width: 25%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+        
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+        
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <a id="title" href="#" style="font-size:36px;padding-top:0;padding-bottom:0;text-align:center;color:red;font-weight:bold;background:white;">MAD v1.0</a>
+    <button class="tablink" onclick="openPage('UploadDatas', this, 'green')" id="defaultOpen">Upload Datas</button>
+    <button class="tablink" onclick="openPage('DatabaseStatus', this, 'blue')">Database Status</button>
+    <button class="tablink" onclick="openPage('About', this, 'orange')">About</button>
+
+    <div id="UploadDatas" class="tabcontent">
+        <form action="/action_page.php">
+            <label for="table" style="font-size: 25px;">Select Table</label>
+            <br/>
+            <select id="table" name="tableName">
+                <option value="australia">사건사고</option>
+                <option value="canada">보행사고</option>
+                <option value="usa">무단횡단사고</option>
+            </select>
+            <br/>
+            <br/>
+            <label for="file" style="font-size: 25px;">Select File</label>
+            <input type="file" id="file" name="file" placeholder="Your last name..">
+            <br/>
+            <br/>
+        </form>
+        <label for="fileInfo" style="font-size: 25px;">File Infomation</label>
+        <ul class="list-group" style="width:30%;">
+            <li class="list-group-item">
+                <span>파일명 :</span>
+
+            </li>
+            <li class="list-group-item">
+                <span>크기 :</span>
+            </li>
+            <li class="list-group-item">
+                <span>데이터 건수 :</span>
+            </li>
+        </ul>
+        <br/>
+        <input type="submit" value="Submit" />
+
+    </div>
+
+    <div id="DatabaseStatus" class="tabcontent">
+        <h3>Contact</h3>
+        <p>Get in touch, or swing by for a cup of coffee.</p>
+    </div>
+
+    <div id="About" class="tabcontent">
+        <h3>About</h3>
+        <p>Who we are and what we do.</p>
+    </div>
+
+    <script>
+        function openPage(pageName, elmnt, color) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].style.backgroundColor = "";
+            }
+            document.getElementById(pageName).style.display = "block";
+            elmnt.style.backgroundColor = color;
+
+        }
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+    </script>
+
+</body>
+
+</html>
