@@ -97,11 +97,86 @@ $(document).ready(function () {
     }
 
     socket.onopen = function (e) {
-        socket.send("환영합니다.");
+
         $("#chattingMsgBox").append("<div class='col-sm-12' style='border:1px solid #424242;'>메롱</div>")
 
     };
-});
+
+
+
+    /* 분석 차트 */
+
+    var chart = bb.generate({
+            "size": {
+                "height": 200,
+                "width": 340
+            },
+            "data": {
+                "columns": [
+                    ["사망", 30, 200, 100, 400, 150, 250],
+                    ["보행", 38, 240, 500, 200, 125, 23]
+                ]
+            },
+            "bindto": "#ChartSize"
+        }
+
+    );
+
+    var chart = bb.generate({
+        "size": {
+            "height": 200,
+            "width": 340
+        },
+        "data": {
+            "columns": [
+            ["어린이", 30, 200, 100, 400, 150, 250],
+            ["노인", 130, 100, 140, 200, 150, 50]
+            ],
+            "type": "bar"
+        },
+        "axis": {
+            "x": {
+                "type": "category",
+                "categories": [
+                                "월",
+                                "화",
+                                "수",
+                                "목",
+                                "금",
+                                "토",
+                                "일"
+                              ]
+            }
+        },
+        "bar": {
+            "width": {
+                "ratio": 0.5
+            }
+        },
+        "bindto": "#BarChart"
+    });
+
+    var chart = bb.generate({
+        "size": {
+            "height": 200,
+            "width": 340
+        },
+        "data": {
+            "columns": [
+	["data1", 300, 350, 300, 0, 0, 0],
+	["data2", 130, 100, 140, 200, 150, 50]
+    ],
+            "types": {
+                "data1": "area",
+                "data2": "area-spline"
+            }
+        },
+        "bindto": "#AreaChart"
+    });
+
+
+}); //ready();
+
 
 //현재위치
 function getLocation() {

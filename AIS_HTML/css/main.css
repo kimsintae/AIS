@@ -19,7 +19,8 @@
 
 .sidenav {
     padding-top: 20px;
-    background: #8B9DC3;
+    /*background: #8B9DC3;*/
+    height: 100%;
 }
 
 
@@ -111,7 +112,7 @@ body {
 }
 
 #chattingMsgBox {
-    height: 250px;
+    height: 100%;
 }
 
 #select_type_box li {
