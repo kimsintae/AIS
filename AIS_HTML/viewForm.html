@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="./css/board.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>글보기</title>
+</head>
+<body>
+	<div class="contain">
+		<h2>글보기</h2>
+		<br>
+		<ul class="list-group ">
+			<li class="list-group-item ">
+				<div class="row">
+					<div class="box box-a "></div>
+					<div class="box box-b ">제목이 표시되는 영역입니다.</div>
+					<div class="box box-c ">2017-12-19 13:30</div>
+				</div>
+			</li>
+			<li class="list-group-item ">
+				<div class="row">
+					<div class="box box-a"></div>
+					<div class="box box-d">
+						<p class="txtar">내용이 표시되는 영역입니다.</p>
+					</div>
+				</div>
+			</li>
+			<li class="list-group-item ">
+				<div class="row">댓글이 표시되는 영역입니다.</div>
+			</li>
+		</ul>
+		<div class="butn">
+			<button class="btn btn-default">수정</button>
+			<button onclick="location.href='list.html'" class="btn btn-default">목록</button>
+		</div>
+	</div>
+	<include-html target="./list.html" completed="listinclude"></include-html>
+	<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript">
+		function includeHtml() {
+			$("include-html").each(
+					function() {
+						element = $(this);
+						element.load(element.attr("target"), eval(element
+								.attr("completed")));
+					});
+		}
+		function listinclude() {
+			$("#sample").html("list");
+		}
+	</script>
+	<script>
+		includeHtml();
+	</script>
+</body>
+</html>
