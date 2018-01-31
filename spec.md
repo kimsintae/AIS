@@ -1,6 +1,5 @@
 #AIS 개발 스펙
 
-
 #framework</br>
 -Spring Framwork
 
@@ -12,15 +11,15 @@
 -bootstrap</br>
 -JSP</br>
 -jquery</br>
--Qgis(GIS tool)</br>
 -openLayers v4.3.6</br>
--d3.js
+-d3.js</br>
+-bilboard.js
+
 #server</br>
 -Tomcat 8.0(WAS)</br>
 -centos(서버)</br>
--geoserver(GIS 서버)
 
 
 #Database server</br>
--postgreSQL(외부DB)</br>
--postGIS
+-MySQL
+
