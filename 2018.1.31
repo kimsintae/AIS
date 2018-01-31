@@ -1,0 +1,6 @@
+1. list page : 글 상세박스, 댓글, 리스트 3단 레이아웃 
+2. manage page : 관리자 계정 필요,  게시글 관리 ( 삭제 ) , 탈퇴자 수, 새로운 게시글 수, 새로운 댓글 수- trigger, 
+3. join page :  닉네임, 이메일인증(optional), 패스워드, 카카오(네이버)  로그인 연동
+4. login page : 
+5. statics page : 통계페이지 레이아웃, 기능 정의
+6. main page :  레이아웃 수정
