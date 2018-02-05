@@ -150,9 +150,9 @@ $(document).ready(function () {
         },
         "data": {
             "columns": [
-	["data1", 300, 350, 300, 0, 0, 0],
-	["data2", 130, 100, 140, 200, 150, 50]
-    ],
+                ["data1", 300, 350, 300, 0, 0, 0],
+                ["data2", 130, 100, 140, 200, 150, 50]
+            ],
             "types": {
                 "data1": "area",
                 "data2": "area-spline"
@@ -180,6 +180,7 @@ autoShowSlides();
 
 }); //ready();
 
+//슬라이드
 function autoShowSlides() {
   var i;
   var slides = document.getElementsByClassName("mySlides");
@@ -194,10 +195,6 @@ function autoShowSlides() {
     captionText.innerHTML = dots[slideIndex-1].title;
     setTimeout(autoShowSlides, 2000); // Change image every 2 seconds
 }
-
-
-
-
 
 // Next/previous controls
 function plusSlides(n) {
@@ -247,7 +244,6 @@ function getLocation() {
         alert('GPS를 지원하지 않습니다');
     }
 }
-
 
 
 //지정된 위치로 이동
