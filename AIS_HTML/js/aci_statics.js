@@ -1,6 +1,8 @@
 var view;
 var map;
 var socket;
+//슬라이드
+var slideIndex = 1;
 $(document).ready(function () {
 
     var areas = {
@@ -89,27 +91,12 @@ $(document).ready(function () {
     });
 
 
-
-    socket = new WebSocket("wss://sandbox.kaazing.net/echo");
-
-    socket.onmessage = function (e) {
-        alert(e.data);
-    }
-
-    socket.onopen = function (e) {
-
-        $("#chattingMsgBox").append("<div class='col-sm-12' style='border:1px solid #424242;'>메롱</div>")
-
-    };
-
-
-
     /* 분석 차트 */
 
     var chart = bb.generate({
             "size": {
-                "height": 200,
-                "width": 340
+                "height": 400,
+                "width": 540
             },
             "data": {
                 "columns": [
@@ -117,15 +104,15 @@ $(document).ready(function () {
                     ["보행", 38, 240, 500, 200, 125, 23]
                 ]
             },
-            "bindto": "#ChartSize"
+            "bindto": "#older_aci"
         }
 
     );
 
     var chart = bb.generate({
         "size": {
-            "height": 200,
-            "width": 340
+            "height": 400,
+            "width": 540
         },
         "data": {
             "columns": [
@@ -153,13 +140,13 @@ $(document).ready(function () {
                 "ratio": 0.5
             }
         },
-        "bindto": "#BarChart"
+        "bindto": "#mudan_aci"
     });
 
     var chart = bb.generate({
         "size": {
-            "height": 200,
-            "width": 340
+            "height": 400,
+            "width": 540
         },
         "data": {
             "columns": [
@@ -171,12 +158,74 @@ $(document).ready(function () {
                 "data2": "area-spline"
             }
         },
-        "bindto": "#AreaChart"
+        "bindto": "#car_aci"
     });
 
+//최상단 체크박스 클릭
+$(".checkall").click(function(){
+    //클릭되었으면
+    if($(".checkall").prop("checked")){
+        //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+        $("input[name=graphType]").prop("checked",true);
+        //클릭이 안되있으면
+    }else{
+        //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+        $("input[name=graphType]").prop("checked",false);
+    }
+});
+    
+
+//showSlides(slideIndex);
+autoShowSlides();
 
 }); //ready();
 
+function autoShowSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("aci_chart");
+  var captionText = document.getElementById("caption");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none"; 
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1} 
+    slides[slideIndex-1].style.display = "block"; 
+    captionText.innerHTML = dots[slideIndex-1].title;
+    setTimeout(autoShowSlides, 2000); // Change image every 2 seconds
+}
+
+
+
+
+
+// Next/previous controls
+function plusSlides(n) {
+  showSlides(slideIndex += n);
+}
+
+// Thumbnail image controls
+function currentSlide(n) {
+  showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var captionText = document.getElementById("caption");
+  if (n > slides.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " active";
+  captionText.innerHTML = dots[slideIndex-1].alt;
+}
 
 //현재위치
 function getLocation() {
