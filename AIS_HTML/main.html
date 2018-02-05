@@ -22,32 +22,28 @@
 <body>
 
     <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">ASL</a>
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav" id="select_type_box">
-                    <li>
-                        <!-- Markup -->
-                        <div id="ChartSize"></div>
-                    </li>
-                    <li>
-                        <div id="BarChart"></div>
-                    </li>
-                    <li>
-                        <div id="AreaChart"></div>
-                    </li>
-                </ul>
-                <button id="myLocation" title="현재 지역에 대한 사고 정보를 표시합니다." onclick="getLocation();"><i class="fa fa-map-marker"></i></button>
-
-            </div>
-        </div>
+         <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="main.html">AIS</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#" alt="statics">사건/사고 통계</a></li>
+        <li><a href="#" alt="community">소통</a></li>
+        <li><a href="#" alt="">분석/통계</a></li>
+        <li><a href="#"></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
+          <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>회원가입</a></li>
+      </ul>
+    </div>
+  </div>
     </nav>
 
     <div class="container-fluid text-center">
@@ -89,7 +85,7 @@
                         <option value="jeonnam">전라남도</option>
                         <option value="jeonbuk">전라북도</option>
                         <option value="chungnam">충청남도</option>
-                        <option value="chungbuk">충청북도</option>
+                        <option value="chungbuk">충청북도</option> 
                         <option value="jeju">제주특별자치도</option>
                     </select>
                     <br/>
@@ -106,6 +102,13 @@
             </div>
         </div>
     </div>
+    
+    <!-- 
+        //현재위치ㅋ
+        <button id="myLocation" title="현재 지역에 대한 사고 정보를 표시합니다." onclick="getLocation();"><i class="fa fa-map-marker"></i></button>
+
+
+    -->
 </body>
 
 </html>
