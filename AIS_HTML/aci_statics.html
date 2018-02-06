@@ -18,136 +18,145 @@
     <script type="text/javascript" src="js/ol.js"></script>
     <script type="text/javascript" src="js/aci_statics.js"></script>
     <style>
-        
 
+        /* 통계 슬라이드 */
+        * {
+          box-sizing: border-box;
+        }
 
-/* 통계 슬라이드 */
-* {
-  box-sizing: border-box;
-}
+        /* Position the image container (needed to position the left and right arrows) */
+        .slideContainer {
+          position: relative;
+          background: #DFE3EE;
+        margin-top: 20px;
+        }
 
-/* Position the image container (needed to position the left and right arrows) */
-.slideContainer {
-  position: relative;
-  background: #DFE3EE;
-margin-top: 20px;
-}
+        /* Hide the images by default */
+        .mySlides {
+          display: none;
+        }
 
-/* Hide the images by default */
-.mySlides {
-  display: none;
-}
+        /* Add a pointer when hovering over the thumbnail images */
+        .cursor {
+          cursor: pointer;
+        }
 
-/* Add a pointer when hovering over the thumbnail images */
-.cursor {
-  cursor: pointer;
-}
+        /* Next & previous buttons */
+        .prev,
+        .next {
+          cursor: pointer;
+          position: absolute;
+          top: 40%;
+          width: auto;
+          padding: 16px;
+          margin-top: -50px;
+          color: white;
+          font-weight: bold;
+          font-size: 20px;
+          border-radius: 0 3px 3px 0;
+          user-select: none;
+          -webkit-user-select: none;
+        }
 
-/* Next & previous buttons */
-.prev,
-.next {
-  cursor: pointer;
-  position: absolute;
-  top: 40%;
-  width: auto;
-  padding: 16px;
-  margin-top: -50px;
-  color: white;
-  font-weight: bold;
-  font-size: 20px;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
-  -webkit-user-select: none;
-}
+        /* Position the "next button" to the right */
+        .next {
+          right: 0;
+          border-radius: 3px 0 0 3px;
+        }
 
-/* Position the "next button" to the right */
-.next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
-}
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+          background-color: rgba(0, 0, 0, 0.8);
+        }
 
-/* On hover, add a black background color with a little bit see-through */
-.prev:hover,
-.next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
-}
+        /* Number text (1/3 etc) */
+        .numbertext {
+          color: #f2f2f2;
+          font-size: 12px;
+          padding: 8px 12px;
+          position: absolute;
+          top: 0;
+        }
 
-/* Number text (1/3 etc) */
-.numbertext {
-  color: #f2f2f2;
-  font-size: 12px;
-  padding: 8px 12px;
-  position: absolute;
-  top: 0;
-}
+        /* Container for image text */
+        .caption-container {
+          text-align: center;
+          background-color: #222;
+          padding: 2px 16px;
+          color: white;
+          margin-top: 20px;
+        }
 
-/* Container for image text */
-.caption-container {
-  text-align: center;
-  background-color: #222;
-  padding: 2px 16px;
-  color: white;
-  margin-top: 20px;
-}
+        .row:after {
+          content: "";
+          display: table;
+          clear: both;
+        }
 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+        /* Six columns side by side */
+        .column {
+          float: left;
+          width: 16.66%;
+        }
 
-/* Six columns side by side */
-.column {
-  float: left;
-  width: 16.66%;
-}
+        /* Add a transparency effect for thumnbail images */
+        .demo {
+          opacity: 0.6;
+        }
 
-/* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.6;
-}
+        .active,
+        .demo:hover {
+          opacity: 1;
+        }
 
-.active,
-.demo:hover {
-  opacity: 1;
-}
-        
-.aci_chart{
-    left: 35%;
-}
-.graphBox{
-    padding: 10px;
-}
-/* Create two equal columns that floats next to each other */
-.column {
-    float: left;
-    width: 50%;
-    padding: 10px;
-}
+        .aci_chart{
+            left: 35%;
+        }
+        .graphBox{
+            padding: 10px;
+        }
+        /* Create two equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 50%;
+            padding: 10px;
+        }
 
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-/* Style the buttons */
-.btn {
-    border: none;
-    outline: none;
-    padding: 12px 16px;
-    background-color: #f1f1f1;
-    cursor: pointer;
-}
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+        /* Style the buttons */
+        .btn {
+            border: none;
+            outline: none;
+            padding: 12px 16px;
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
 
-.btn:hover {
-    background-color: #ddd;
-}
+        .btn:hover {
+            background-color: #ddd;
+        }
 
-.btn.active {
-    background-color: #666;
-    color: white;
-}
+        .btn.active {
+            background-color: #666;
+            color: white;
+        }
+
+        input[type=checkbox]{
+            font-size: 20px;
+        }
+
+        .graphli{
+            border-right: 1px solid #424242;
+        }
+        #graphList li{
+            overflow: hidden;
+        }
     </style>
 </head>
 
@@ -180,14 +189,13 @@ margin-top: 20px;
 
   <!-- Full-width images with number text -->
   
-  <!-- 교통사고 -->
+
   <div class="mySlides">
     <div class="numbertext">1 / 6</div>
       <div class="graphBox" style="width:100%; height:400px;">
-         <div class="aci_chart" id="car_aci" title="2018년 교통사고"></div>
+<!--         <div class="aci_chart" id="car_aci" title="2018년 교통사고"></div>-->
       </div>
   </div>
-
 
   <div class="mySlides">
     <div class="numbertext">2 / 6</div>
@@ -205,7 +213,7 @@ margin-top: 20px;
 
   <div class="mySlides">
     <div class="numbertext">4 / 6</div>
-      <div class="graphBox" style="width:100%; height:400px;">
+      <div class="graphBox" style="width:100%; height:400px;"> 
           <div class="aci_chart" id="kid_aci" title="2018년 보행어린이 사고"></div>
       </div>
   </div>
@@ -234,10 +242,9 @@ margin-top: 20px;
   </div>
 </div><!--// graph slider end -->
             
-            
     <div class="container-fluid text-center">
        <div class="row content" style="margin-top:10px;">
-            <div class="col-sm-12">
+            <div class="col-sm-8" style="padding-left: 0">
                 <form class="form-inline" action="/action_page.php">
                   <div class="form-group">
                     <label for="aci_type">데이터 유형 : </label>
@@ -250,8 +257,8 @@ margin-top: 20px;
                         <option value="bicycle_act">자전거 사고</option>
                     </select>
                   </div>
-
-                  <div class="checkbox" style="margin-left:50px;">
+                    
+                  <div class="checkbox" style="margin:0 50px;">
                     <span> 그래프 유형 : </span>
                     <label><input id="year" type="checkbox" class="checkall"> ALL </label>
                     <label><input name="graphType" value="year" id="year" type="checkbox"> 년도 별</label>
@@ -262,40 +269,38 @@ margin-top: 20px;
                   </div>
                   <button type="submit" class="btn btn-default">결과 보기</button>
               </form>
-                
+            <br/>
+            </div>
+            <div class="col-sm-12">
+                <ul class="list-group" id="graphList">
+                  <li class="list-group-item">
+                    <div class="col-sm-8 graphli">
+                        <div id="car_aci" title="2018년 교통사고" style="left:20%"></div>
+                        <ul id='legend'></ul>
+                    </div>
+                    <div class="col-sm-4">개요</div>
+                  </li>
+                    
+                  <li class="list-group-item">
+                    <div class="col-sm-8 graphli">
+                        <div id="mudan_aci" title="2018년 무단횡단 사고"></div>  
+                    </div>
+                    <div class="col-sm-4">개요</div>
+                  </li>
+                    
+                  <li class="list-group-item">
+                    <div class="col-sm-8 graphli">
+                        <div class="aci_chart" id="older_aci" title="2018년 보행노인 사고"></div>  
+                    </div>
+                    <div class="col-sm-4">개요</div>
+                  </li>
+                </ul>
+            </div>
+ 
+            <div class="row">
+
             </div>
 
-            <div class="row">
-              <div class="column" style="background-color:#aaa;">
-                <div class="aci_chart" id="car_aci"></div>
-              </div>
-              <div class="column" style="background-color:#bbb;">
-                <h2>Column 2</h2>
-               
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="column" style="background-color:#ccc;">
-                <h2>Column 3</h2>
-             
-              </div>
-              <div class="column" style="background-color:#ddd;">
-                <h2>Column 4</h2>
-       
-              </div>
-            </div>
-            
-            <div class="row">
-              <div class="column" style="background-color:#ccc;">
-                <h2>Column 5</h2>
-              
-              </div>
-              <div class="column" style="background-color:#ddd;">
-                <h2>Column 6</h2>
-            
-              </div>
-            </div>
           
         </div><!--// rowcontent -->
     </div>

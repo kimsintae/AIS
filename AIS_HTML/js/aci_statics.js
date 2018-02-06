@@ -158,7 +158,17 @@ $(document).ready(function () {
                 "data2": "area-spline"
             }
         },
-        "bindto": "#car_aci"
+        "bindto": "#car_aci",
+        "title": {
+             text: "2018",
+             padding: {
+                 top: 10,
+                 right: 10,
+                 bottom: 10,
+                 left: 10
+             },
+             position: "top-center"
+         }
     });
 
 //최상단 체크박스 클릭
