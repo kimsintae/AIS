@@ -1,8 +1,7 @@
-var view;
-var map;
-var socket;
 //슬라이드
 var slideIndex = 1;
+
+var vmap;
 $(document).ready(function () {
 
     var areas = {
@@ -62,32 +61,64 @@ $(document).ready(function () {
         $("#sigugun_type").empty();
         $("#sigugun_type").append("<option value='default'>시도군을 선택해주세요!</option>");
         for (var i = 0; i < areas[$(this).val()].length; i++) {
+            $("#sigugun_type").append("<option value='"+areas[$(this).val()][i]+"'>" + areas[$(this).val()][i] + "</option>");
+        }
+        
+        //14132818.062706212,4518196.494315397 (좌우,상하);
+        switch($(this).val()){
+            case 'seoul' :
+                move(14132818.062706212,4518196.494315397,11);
+                break;
+            case 'jeju' :
+                move(14088855.430004759,3950341.7580767134,11);
+                break;
+            case 'incheon' :
+                move(14099835.663393619,4505268.1150528025,11);
+                break;
+            case 'daejeon' :
+                move(14183059.565026853,4349097.835558095,11);
+                break;
+            case 'daegu' :
+                move(14311520.740294414,4280893.709901185,11);
+                break;
+            case 'busan' :
+                move(14360410.256899985,4186268.1275908407,11);
+                break;
+            case 'ulsan' :
+                move(14391546.32960681,4240542.595679611,11);
+                break;
+            case 'kwangju' :
+                move(14115333.26233923,4184420.2311038882,11);
+                break;
+            case 'chungnam' :
+                move(14083740.36783804,4379157.072613827,9);
+                break;
+            case 'chungbuk' :
+                move(14200112.973144941,4395792.640335675,9);
+                break;  
+            case 'kangwon' :
+                move(14245142.78696988,4552107.693377906,9);
+                break;  
+            case 'kyngnam' :
+                move(14245327.054122992,4219744.381491814,9);
+                break;  
+            case 'kyngbuk' :
+                move(14331728.968208285,4343478.350122426,9);
+                break;  
+            case 'jeonnam' :
+                move(34.9331267,126.8180731,9);
+                break;  
+            case 'jeonbuk' :
+                move(14127554.873386139,4260855.494898221,9);
+                break;    
+   
 
-            $("#sigugun_type").append("<option value=''>" + areas[$(this).val()][i] + "</option>");
         }
     });
 
 
 
-    //지도
-//
-//    view = new ol.View({
-//        //                          longitude    latitude 
-//        center: ol.proj.fromLonLat([127.8531913, 35.5807185]),
-//        zoom: 12
-//    });
-//
-//
-//    //center(x,y) x 소수점 자리 올리면 오른쪽으로 이동, y 소수점 자리 올리면 위로 이동 
-//    map = new ol.Map({
-//        target: 'map',
-//        layers: [
-//          new ol.layer.Tile({
-//                source: new ol.source.OSM()
-//            })
-//        ],
-//        view: view
-//    });
+ 
   vw.ol3.MapOptions = {
       basemapType: vw.ol3.BasemapType.GRAPHIC
     , controlDensity: vw.ol3.DensityType.EMPTY
@@ -97,74 +128,46 @@ $(document).ready(function () {
     , initPosition: vw.ol3.CameraPosition
    }; 
      
-    vmap = new vw.ol3.Map("vmap",  vw.ol3.MapOptions); 
-    vmap.getView().setCenter([14129709.590359,4512313.7639686]);
+vmap = new vw.ol3.Map("vmap",  vw.ol3.MapOptions); 
 
-//최상단 체크박스 클릭
-$(".checkall").click(function(){
-    //클릭되었으면
-    if($(".checkall").prop("checked")){
-        //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
-        $("input[name=graphType]").prop("checked",true);
-        //클릭이 안되있으면
-    }else{
-        //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
-        $("input[name=graphType]").prop("checked",false);
-    }
-});
-    
+
+//지도 이동
+  function move(x,y,z){
+       var _center = [ x, y ];
+
+       var z = z;
+       var pan = ol.animation.pan({
+        duration : 500,
+        source : (vmap.getView().getCenter())
+       });
+       vmap.beforeRender(pan);
+       vmap.getView().setCenter(_center);
+       vmap.getView().setZoom(z);
+       //setTimeout("fnMoveZoom()", 500);
+  }
+
+  function fnMoveZoom() {
+       zoom = vmap.getView().getZoom();
+       if (16 > zoom) {
+        vmap.getView().setZoom(14);
+       }
+
+  };
+
+    //최상단 체크박스 클릭
+    $(".checkall").click(function(){
+        //클릭되었으면
+        if($(".checkall").prop("checked")){
+            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 true로 정의
+            $("input[name=graphType]").prop("checked",true);
+            //클릭이 안되있으면
+        }else{
+            //input태그의 name이 chk인 태그들을 찾아서 checked옵션을 false로 정의
+            $("input[name=graphType]").prop("checked",false);
+        }
+    });
+
 }); //ready();
 
 
 
-//현재위치
-function getLocation() {
-    if (navigator.geolocation) { // GPS를 지원하면
-        navigator.geolocation.getCurrentPosition(function (position) {
-            console.log(position);
-            //현재위치 좌표
-            //alert(position.coords.latitude + ' ' + position.coords.longitude);
-
-            flyTo(ol.proj.fromLonLat([position.coords.longitude, position.coords.latitude]), function () {});
-        }, function (error) {
-            console.error(error);
-        }, {
-            enableHighAccuracy: false,
-            maximumAge: 0,
-            timeout: Infinity
-        });
-    } else {
-        alert('GPS를 지원하지 않습니다');
-    }
-}
-
-
-//지정된 위치로 이동
-function flyTo(location, done) {
-    var duration = 2000;
-    var zoom = view.getZoom();
-    var parts = 2;
-    var called = false;
-
-    function callback(complete) {
-        --parts;
-        if (called) {
-            return;
-        }
-        if (parts === 0 || !complete) {
-            called = true;
-            done(complete);
-        }
-    }
-    view.animate({
-        center: location,
-        duration: duration
-    }, callback);
-    view.animate({
-        zoom: zoom - 1,
-        duration: duration / 2
-    }, {
-        zoom: zoom,
-        duration: duration / 2
-    }, callback);
-}
