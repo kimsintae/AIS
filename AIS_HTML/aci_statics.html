@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/main.css">
+<!--    <link rel="stylesheet" href="css/main.css">-->
     <link rel="stylesheet" href="css/ol.css">
     <link rel="stylesheet" href="css/billboard.css">
     
@@ -28,7 +28,7 @@
         .slideContainer {
           position: relative;
           background: #DFE3EE;
-        margin-top: 20px;
+          margin-top: 20px;
         }
 
         /* Hide the images by default */
@@ -150,7 +150,6 @@
         input[type=checkbox]{
             font-size: 20px;
         }
-
         .graphli{
             border-right: 1px solid #424242;
         }
@@ -161,7 +160,8 @@
 </head>
 
 <body>
-
+    
+     <!--header-->
     <nav class="navbar navbar-inverse">
          <div class="container-fluid">
             <div class="navbar-header">
@@ -175,8 +175,9 @@
             <div class="collapse navbar-collapse" id="myNavbar">
               <ul class="nav navbar-nav">
                 <li class="active"><a href="#" alt="statics">사건/사고 통계</a></li>
-                <li><a href="#" alt="community">소통</a></li>
-                <li><a href="#" alt="">분석/통계</a></li>
+                <li><a href="map_statics.html" alt="">지도 통계</a></li>
+                <li><a href="community.html" alt="community">소통</a></li>
+                
               </ul>
               <ul class="nav navbar-nav navbar-right">
                   <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
@@ -185,6 +186,7 @@
             </div>
           </div>
     </nav>
+     <!--// header-->
 <div class=" slideContainer">
 
   <!-- Full-width images with number text -->
@@ -269,16 +271,18 @@
                   </div>
                   <button type="submit" class="btn btn-default">결과 보기</button>
               </form>
-            <br/>
+              <br/>
             </div>
+           
+           <!-- graph list -->
             <div class="col-sm-12">
                 <ul class="list-group" id="graphList">
                   <li class="list-group-item">
-                    <div class="col-sm-8 graphli">
-                        <div id="car_aci" title="2018년 교통사고" style="left:20%"></div>
+                    <div class="col-sm-7 graphli">
+                        <div id="car_aci" title="2018년 교통사고" style="left:15%"></div>
                         <ul id='legend'></ul>
                     </div>
-                    <div class="col-sm-4">개요</div>
+                    <div class="col-sm-5">개요</div>
                   </li>
                     
                   <li class="list-group-item">
