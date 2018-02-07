@@ -50,15 +50,7 @@
     
     <div class="container-fluid text-center">
         <div class="row content">
-
-            <!-- 지도영역 -->
-            <div class="col-sm-10" style="padding:0;">
-                <div id="vmap" class="map"></div>
-            </div>
-
-            <!-- 분석 그래프 및 채팅 창 -->
-            <div class="col-sm-2 sidenav">
-                <div class="well" style="text-align:left;">
+            <div class="col-sm-4">
                     <span>카테고리</span>
                     <select name="acd_type" id="act_type" class="form-control">
                         <option value="car_act">교통사고</option>
@@ -68,7 +60,9 @@
                         <option value="school_kids_act">스쿨존 어린이 사고</option>
                         <option value="bicycle_act">자전거 사고</option>
                     </select>
-                    <br/>
+            </div>
+            
+            <div class="col-sm-4">
                     <span>지역선택</span>
                     <select name="sido_type" id="sido_type" class="form-control">
                         <option value="default">지역을 선택해 주세요.</option>
@@ -90,17 +84,21 @@
                         <option value="chungbuk">충청북도</option> 
                         <option value="jeju">제주특별자치도</option>
                     </select>
-                    <br/>
+            </div>
+            <div class="col-sm-4">
                     <span>지역선택2</span>
                     <select name="sigugun_type" id="sigugun_type" class="form-control">
                         <option value="default">시도군을 선택해주세요!</option>
                     </select>
-                </div>
+            </div>
+            <!-- 지도영역 -->
+            <div class="col-sm-10" style="padding:0;">
+                <div id="vmap" class="map"></div>
+            </div>
 
-                <div id="chattingMsgBox" class="well" style="margin-bottom:0;">
-                </div>
-                <input id="chattingBox" class="well col-sm-10" type="text">
-                <button class="well col-sm-2 text-center" type="button" style="font-size:8px;">go</button>
+            <!-- 분석 그래프 -->
+            <div class="col-sm-2">
+               
             </div>
         </div>
     </div>

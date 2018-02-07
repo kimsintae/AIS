@@ -69,7 +69,6 @@ $(document).ready(function () {
 
 
 
-
     //지도
 //
 //    view = new ol.View({
