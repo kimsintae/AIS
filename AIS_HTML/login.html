@@ -1,126 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
+    <title>ASI v1.0</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--    <link rel="stylesheet" href="css/main.css">-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <title>목록</title>
+
     <style>
-        .butn {
-            float: right;
-        }
-        
-        .paging {
-            text-align: center;
-        }
-        
-        .rep {
-            font-size: 5px;
-        }
-        
-        .row {
-            width: 100%;
-            display: table;
-        }
-        
-        .box {
-            display: table-cell;
-        }
-        
-        .box-a {
-            width: 15%;
-            text-align: center;
-            vertical-align: middle;
-        }
-        
-        .box-b {
-            width: 50%
-        }
-        
-        .box-c {
-            width: 20%;
-            text-align: center;
-            vertical-align: middle;
-        }
-        
-        .box-d {
-            width: 80%
-        }
-        
-        .effect8:hover {
-            box-shadow: 0 80px 0 0 rgba(0, 0, 0, 0.05) inset, 0 -80px 0 0 rgba(0, 0, 0, 0.05) inset;
-        }
-        
-        .head {
-            text-align: center;
-            position: relative;
-            display: block;
-            padding: 10px 15px;
-            margin-bottom: -1px;
-            background-color: #119d7a;
-            color: white;
-            position: relative;
-        }
-        
-        .left {
-            background-color: #119d7a;
-            color: white;
-        }
-        
-        .contain {
-            padding-right: 15px;
-            padding-left: 15px;
-            margin-right: auto;
-            margin-left: auto;
-            width: 780px;
-        }
-        
-        .txtar {
-            resize: none;
-            display: block;
-            width: 100%;
-            height: 400px;
-            padding: 6px 12px;
-            font-size: 14px;
-            line-height: 1.42857143;
-            color: #555;
-            background-color: #fff;
-            background-image: none;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-            display: block;
-        }
-        
-        .passwd {
-            width: 25%;
-            height: 34px;
-            padding: 6px 12px;
-            font-size: 14px;
-            line-height: 1.42857143;
-            color: #555;
-            background-color: #fff;
-            background-image: none;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-            -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-            -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-            transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-        }
-        
-        .passwd_txt {
-            font-size: 12px;
-            color: red;
-        }
+
     </style>
 </head>
 
@@ -139,9 +31,9 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li><a href="aci_statics.html" alt="statics">사건/사고 통계</a></li>
+                    <li class="active"><a href="#" alt="statics">사건/사고 통계</a></li>
                     <li><a href="map_statics.html" alt="">지도 통계</a></li>
-                    <li class="active"><a href="community.html" alt="community">소통</a></li>
+                    <li><a href="community.html" alt="community">소통</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
@@ -150,7 +42,7 @@
             </div>
         </div>
     </nav>
-    <!--//header-->
+    <!--// header-->
 
 
     <div class="container">
@@ -289,6 +181,7 @@
             </ul>
         </div>
     </div>
+
 </body>
 
 </html>
