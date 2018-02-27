@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>ASI v1.0</title>
     <meta charset="utf-8">
@@ -10,14 +9,22 @@
     <!--    <link rel="stylesheet" href="css/main.css">-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
     <style>
-
+        .naver_login{
+            display: none
+        }
+        .div_center{
+            text-align: center;
+        }
+        .input_center{
+            display: inline-table;
+        }
+        .bt_login{
+            height: 69px;
+        }
     </style>
 </head>
-
 <body>
-
     <!--header-->
     <nav class="navbar navbar-inverse">
         <div class="container-fluid">
@@ -31,157 +38,73 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="#" alt="statics">사건/사고 통계</a></li>
+                    <li><a href="#" alt="statics">사건/사고 통계</a></li>
                     <li><a href="map_statics.html" alt="">지도 통계</a></li>
                     <li><a href="community.html" alt="community">소통</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
+                    <li><a href="login.html"><span class="glyphicon glyphicon-log-in active"></span>로그인</a></li>
                     <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>회원가입</a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <!--// header-->
-
-
-    <div class="container">
-        <h2>목록</h2>
-        <br>
-        <ul class="list-group ">
-            <li class="head">
-                <div class="row ">
-                    <div class="box box-a">No</div>
-                    <div class="box box-b">제목</div>
-                    <div class="box box-c">등록일</div>
-                    <div class="box box-a">조회수</div>
-                </div>
-            </li>
-            <li class="list-group-item effect8">
-                <div class="row">
-                    <div class="box box-a">10</div>
-                    <div class="box box-b">
-                        <a href="viewForm.html"> 안양시청 앞에 음주단속!!</a> <strong class="rep">[312]</strong>
-                        <img alt="new_icon" src="img/icon_new.gif"><img alt="hot_icon" src="img/icon_hot.gif">
-                    </div>
-                    <div class="box box-c">19:33</div>
-                    <div class="box box-a">756</div>
-                </div>
-            </li>
-            <li class="list-group-item effect8">
-                <div class="row">
-                    <div class="box box-a">9</div>
-                    <div class="box box-b">
-                        <a href="viewForm.html">오예! 퇴근이다!!!</a> <strong class="rep">[13]</strong>
-                        <img alt="new_icon" src="img/icon_new.gif">
-                    </div>
-                    <div class="box box-c">18:01</div>
-                    <div class="box box-a">143</div>
-                </div>
-
-            </li>
-            <li class="list-group-item effect8">
-                <div class="row">
-                    <div class="box box-a">8</div>
-                    <div class="box box-b">
-                        <a href="viewForm.html">??? <strong class="rep">[2]</strong>
-						</a><img alt="new_icon" src="img/icon_new.gif">
-                    </div>
-                    <div class="box box-c">15:59</div>
-                    <div class="box box-a">235</div>
-                </div>
-            </li>
-
-            <li class="list-group-item effect8">
-                <div class="row">
-                    <div class="box box-a">7</div>
-                    <div class="box box-b">
-                        <a href="viewForm.html">점심 맛있게 드세요</a> <strong class="rep">[32]</strong>
-                        <img alt="new_icon" src="img/icon_new.gif">
-                    </div>
-                    <div class="box box-c">12:30</div>
-                    <div class="box box-a">353</div>
-                </div>
-            </li>
-            <li class="list-group-item effect8">
-                <div class="row">
-                    <div class="box box-a">6</div>
-                    <div class="box box-b">
-                        <a href="viewForm.html">내일 출근 실화?</a> <strong class="rep">[60]</strong>
-                    </div>
-                    <div class="box box-c">17-12-17 23:43</div>
-                    <div class="box box-a">587</div>
-                </div>
-            </li>
-            <li class="list-group-item effect8">
-                <div class="row">
-                    <div class="box box-a">5</div>
-                    <div class="box box-b">
-                        <a href="viewForm.html">으아아아아아아</a> <strong class="rep">[15]</strong>
-                    </div>
-                    <div class="box box-c">17-12-17 21:11</div>
-                    <div class="box box-a">256</div>
-                </div>
-            </li>
-            <li class="list-group-item effect8">
-                <div class="row">
-                    <div class="box box-a">4</div>
-                    <div class="box box-b">
-                        <a href="viewForm.html">내일도 눈온답니다~ 눈길조심</a> <strong class="rep">[87]</strong>
-                    </div>
-                    <div class="box box-c">17-12-17 20:15</div>
-                    <div class="box box-a">590</div>
-                </div>
-            </li>
-            <li class="list-group-item effect8">
-                <div class="row">
-                    <div class="box box-a">3</div>
-                    <div class="box box-b">
-                        <a href="viewForm.html">세차했는데 눈온다...또르륵 <strong class="rep">[23]</strong></a>
-                    </div>
-                    <div class="box box-c">17-12-17 19:43</div>
-                    <div class="box box-a">376</div>
-                </div>
-            </li>
-            <li class="list-group-item effect8">
-                <div class="row">
-                    <div class="box box-a">2</div>
-                    <div class="box box-b">
-                        <a href="viewForm.html"><a href="#">하 비트코인 망했다. 한강물 따숩냐</a> <strong class="rep">[198]</strong> <img alt="hot_icon" src="img/icon_hot.gif"></a>
-                    </div>
-                    <div class="box box-c">17-12-17 19:04</div>
-                    <div class="box box-a">905</div>
-                </div>
-            </li>
-            <li class="list-group-item effect8">
-                <div class="row">
-                    <div class="box box-a">2</div>
-                    <div class="box box-b">
-                        <a href="viewForm.html">경부고속도로에서 사고남!! 우회해 가세..</a> <strong class="rep">[55]</strong>
-                    </div>
-                    <div class="box box-c">17-12-17 18:24</div>
-                    <div class="box box-a">208</div>
-                </div>
-            </li>
-        </ul>
-        <div class="butn">
-            <button type="button" class="btn btn-default" onclick="location.href='createForm.html'">글쓰기</button>
+    <div class="div_center">
+        <img src="img/ASI2.jpg" alt="loding..." /><br><br> 
+        <a id ='kakao-login-btn' class="btn btn-warning" onclick ="loginWithKakao()" >
+            <span class="b1">kakao로그인</span>
+        </a>
+        <a class="btn btn-success"	 onclick="naver_login()">
+            <div id="naver_id_login" class="naver_login" ></div>
+            <span class="b1">naver로그인</span>
+        </a>
+        <br><br> 
+        <div class="input_center">
+            <div style="float: left">
+                <input type="text"     class="form-control" maxlength="20" placeholder="ID"        name="id" />
+                <input type="password" class="form-control" maxlength="20" placeholder="Password"  name="password" />
+            </div>
+            <div style="float: left">
+                <input type="submit"	class="btn btn-info bt_login" value="Log In"> 
+                <br>
+            </div>
         </div>
-        <div class="paging">
-            <ul class="pagination">
-                <li>
-                    <a href="#"></a>
-                </li>
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">></a></li>
-            </ul>
+        <div>
+            <a class="reset_pass" href="#">Lost your password?</a>
+        </div>
+        <div class="separator">
+            <p class="change_link">New to site? 
+                <a href="User_Add.jsp" class="to_register">Create Account </a>
+            </p><br>
         </div>
     </div>
-
+    <form action="Login_Proc.jsp" method="post" id="loginform">
+		    <input type="hidden" value="" name="logintype" id="logintype"> 
+		    <input type="hidden" value="" name="nickname" id="nickname"> 
+		    <input type="hidden" value="" name="uniqueID" id="uniqueID"> 
+		    <input type="hidden" value="" name="id" id="id"> 
+		  </form>
+	<!-- 카카오톡 로그인 script -->
+	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script type="text/javascript" src="js/kakao.js"></script>
+	<!-- 카카오톡 로그인 끝 -->
+	<!-- 네이버 로그인 -->
+	<script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript">
+        var naver_id_login = new naver_id_login("iUPz8s7GJYcx1bWMvaEQ", "http://192.168.123.14/mining/production/Login_Naver.jsp");
+        var state = naver_id_login.getUniqState();
+        naver_id_login.setButton("white", 2,40);
+        naver_id_login.setDomain("http://192.168.123.14/mining/production/Login.jsp");
+        naver_id_login.setState(state);
+        naver_id_login.setPopup();
+        naver_id_login.init_naver_id_login();
+        function naver_login(){
+            naver_id_login_anchor.click();
+        }
+    </script>
+	<!-- 네이버 로그인 끝 -->
 </body>
-
 </html>
