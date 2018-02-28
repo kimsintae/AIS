@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ASI v1.0</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        /* 여기다 css 정의 */
+        img.bg {
+            min-height: 100%;
+            min-width: 100%;
+            width: 100%;
+            height: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            opacity: 0.3;
+        }
+        .container {
+            position: relative;
+            text-align: left;
+        }
+        input.mail{
+            display: inline ;width: 80%
+        }
+    </style>
+</head>
+	
+<body>
+    <img class="bg" src="img/AIS.jpg" alt="loding..." /><br><br> 
+    <div class="container-fluid text-center" style="height:100%;">
+        <div class="row content" style="height:100%;">
+            <!-- 본문 소스 작성 -->
+            <div class="container">
+                <div>
+                    <strong>이메일</strong><br>
+                    <input type="text" class="form-control mail" placeholder="E-mail" maxlength="40" name="email" id="check_mail">
+                    <input type="submit" value="발송" class="btn btn-info submit" onclick="send()">
+                    <br><br>
+                    <strong>인증번호</strong><br>
+                    <input type="text" class="form-control mail" placeholder="인증번호" maxlength="6" name="num" id="check_num" >
+                    <input type="submit" value="확인" class="btn btn-info submit" onclick="check()">
+                </div>
+            </div>
+        </div><!--// row content -->
+    </div>
+    <script>
+        function send(f){
+            alert("메일 발송");
+        }
+        function check(f){
+            alert("인증중");
+        }
+    </script>
+</body>
+
+</html>
