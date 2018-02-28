@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>ASI v1.0</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        /* 여기다 css 정의 */
+        img.bg {
+            min-height: 100%;
+            min-width: 1024px;
+            width: 100%;
+            height: auto;
+            position: fixed;
+            top: 0;
+            left: 0;
+            opacity: 0.3;
+        }
+        .container {
+            position: relative;
+        }
+        input.txt{
+            margin-bottom: 5px;
+        }
+        .div_center{
+            margin: 0 auto;
+            width: 50%;
+            text-align: left;
+        }
+    </style>
+</head>
+	
+<body>
+    <img class="bg" src="img/ASI.jpg" alt="" />
+    <!--header-->
+    <nav class="navbar navbar-inverse ">
+         <div class="container-fluid ">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+              </button>
+              <a class="navbar-brand" href="main.html">AIS</a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                        <li><a href="aci_statics.html" alt="statics">사건/사고 통계</a></li>
+                        <li><a href="map_statics.html" alt="">지도 통계</a></li>
+                        <li><a href="community.html" alt="community">소통</a></li>
+                <li><a href="#"></a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
+                  <li class="active"><a href="agree.html"><span class="glyphicon glyphicon-log-in"></span>회원가입</a></li>
+              </ul>
+            </div>
+          </div>
+    </nav>
+     <!--// header-->
+    
+    <div class="container-fluid text-center" style="height:100%;">
+        <div class="row content" style="height:100%;"> 
+        <!-- 본문 소스 작성 -->
+        <br><br>
+        <div class="container">
+            <form action="" method="post" onsubmit="return submit_check(this)">
+		        <h1>회원가입</h1><br>
+                    <div class="div_center">
+                        <strong>아이디</strong>
+                        <input type="text" class="form-control txt" placeholder="UserID" maxlength="20" name="id" id="userID" onkeyup="key_check(event)">
+                        <strong>닉네임</strong>
+                        <input type="text" class="form-control txt" placeholder="NickName" maxlength="16" name="nick" id="nick" onkeyup="key_check(event)">
+                        <strong>비밀번호</strong>
+                        <input type="password" class="form-control txt" placeholder="Password" maxlength="20" name="password" id="password" onkeyup="key_check(event)">
+                        <strong>비밀번호 확인</strong>
+                        <input type="password" class="form-control txt" placeholder="Password" maxlength="20" name="password" id="password" nkeyup="key_check(event)">
+                        <strong>아이디</strong>
+                        <input type="email" class="form-control txt" placeholder="Email" maxlength="30" name="email" onclick="email_check()" onkeyup="email_check()" >
+                    </div>
+				    <div>
+                        <br>
+				        <input type="submit" value="가입하기" class="btn btn-info submit" >
+				        <input style="text-align: left" type="button" value="뒤로가기" class='btn btn-info submit' onclick="history.back()">
+				    </div>
+                </form>
+            </div>
+        </div><!--// row content -->
+    </div>
+    <script>
+        function submit_check(){
+            alert("대기");
+            return false;
+        }
+        function email_check(){
+            window.open("user_add.html","E-Mail","width=500 height=400 ");
+        }
+    </script>
+
+</body>
+
+</html>

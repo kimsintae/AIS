@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>ASI v1.0</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <!--    <link rel="stylesheet" href="css/main.css">-->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <style>
+        /* 여기다 css 정의 */
         .naver_login{
             display: none
         }
@@ -22,65 +24,75 @@
         .bt_login{
             height: 69px;
         }
+        .div_left{
+            float: left
+        }
     </style>
 </head>
+	
 <body>
-    <!--header-->
+     <!--header-->
     <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
+         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="main.html">AIS</a>
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+              </button>
+              <a class="navbar-brand" href="main.html">AIS</a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="#" alt="statics">사건/사고 통계</a></li>
-                    <li><a href="map_statics.html" alt="">지도 통계</a></li>
-                    <li><a href="community.html" alt="community">소통</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="login.html"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span>회원가입</a></li>
-                </ul>
+              <ul class="nav navbar-nav">
+                        <li><a href="aci_statics.html" alt="statics">사건/사고 통계</a></li>
+                        <li><a href="map_statics.html" alt="">지도 통계</a></li>
+                        <li><a href="community.html" alt="community">소통</a></li>
+                <li><a href="#"></a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                  <li class="active"><a href="login.html"><span class="glyphicon glyphicon-log-in"></span>로그인</a></li>
+                  <li><a href="agree.html"><span class="glyphicon glyphicon-log-in"></span>회원가입</a></li>
+              </ul>
             </div>
-        </div>
+          </div>
     </nav>
-    <!--// header-->
-    <div class="div_center">
-        <img src="img/ASI2.jpg" alt="loding..." /><br><br> 
-        <a id ='kakao-login-btn' class="btn btn-warning" onclick ="loginWithKakao()" >
-            <span class="b1">kakao로그인</span>
-        </a>
-        <a class="btn btn-success"	 onclick="naver_login()">
-            <div id="naver_id_login" class="naver_login" ></div>
-            <span class="b1">naver로그인</span>
-        </a>
-        <br><br> 
-        <div class="input_center">
-            <div style="float: left">
-                <input type="text"     class="form-control" maxlength="20" placeholder="ID"        name="id" />
-                <input type="password" class="form-control" maxlength="20" placeholder="Password"  name="password" />
-            </div>
-            <div style="float: left">
-                <input type="submit"	class="btn btn-info bt_login" value="Log In"> 
-                <br>
-            </div>
-        </div>
-        <div>
-            <a class="reset_pass" href="#">Lost your password?</a>
-        </div>
-        <div class="separator">
-            <p class="change_link">New to site? 
-                <a href="User_Add.jsp" class="to_register">Create Account </a>
-            </p><br>
-        </div>
+     <!--// header-->
+    
+    <div class="container-fluid text-center" style="height:100%;">
+        <div class="row content" style="height:100%;">
+            <!-- 본문 소스 작성 -->
+            <div class="div_center">
+                <img src="img/ASI.jpg" alt="loding..." /><br><br> 
+                <a id ='kakao-login-btn' class="btn btn-warning" onclick ="loginWithKakao()" >
+                    <span class="b1">kakao로그인</span>
+                </a>
+                <a class="btn btn-success"	 onclick="naver_login()">
+                    <div id="naver_id_login" class="naver_login" ></div>
+                    <span class="b1">naver로그인</span>
+                </a>
+                <br><br> 
+                <div class="input_center">
+                    <div class="div_left">
+                        <input type="text"     class="form-control" maxlength="20" placeholder="ID"        name="id" />
+                        <input type="password" class="form-control" maxlength="20" placeholder="Password"  name="password" />
+                    </div>
+                    <div class="div_left">
+                        <input type="submit"	class="btn btn-info bt_login" value="Log In"> 
+                        <br>
+                    </div>
+                </div>
+                <div>
+                    <a class="reset_pass" href="#">Lost your password?</a>
+                </div>
+                <div class="separator">
+                    <p class="change_link">New to site? 
+                        <a href="agree.html" class="to_register">Create Account </a>
+                    </p><br>
+                </div>
+            </div>  
+        </div><!--// row content -->
     </div>
-
-	<!-- 카카오톡 로그인 script -->
+    <!-- 카카오톡 로그인 script -->
 	<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script type="text/javascript" src="js/kakao.js"></script>
@@ -102,4 +114,5 @@
     </script>
 	<!-- 네이버 로그인 끝 -->
 </body>
+
 </html>
